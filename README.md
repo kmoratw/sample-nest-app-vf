@@ -64,4 +64,4 @@ Nest is [MIT licensed](LICENSE).
 
 ## Overview
 
-this is a sample application
+this is a sample application using the NestJS template
