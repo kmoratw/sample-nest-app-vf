@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "sample-nest-app-vf"
+  description: "this is a sample application"
+  links:
+    - url: https://api-sample-nest-app-vf-vodafoneziggo.empcbr.thoughtworks-labs.net/api
+      title: sample-nest-app-vf
+      icon: dashboard
+  annotations:
+    circleci.com/project-slug: github/platform-dx/sample-nest-app-vf
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug:  platform-dx/sample-nest-app-vf
+    sonarqube.org/project-key: "sample-nest-app-vf"
+    backstage.io/kubernetes-label-selector: "app=sample-nest-app-vf"
+    backstage.io/adr-location: docs/adrs/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: "platform-dx"
+  providesApis:
+    - "sample-nest-app-vf"

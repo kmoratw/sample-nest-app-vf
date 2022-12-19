@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "sample-nest-app-vf"
+  description: "this is a sample application"
+spec:
+  type: openapi
+  lifecycle: production
+  owner:  "platform-dx"
+  definition:
+    $text: https://github.com/platform-dx/sample-nest-app-vf/blob/main/open-api.yaml

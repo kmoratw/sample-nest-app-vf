@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sample-nest-app-vf-ingress
+spec:
+  rules:
+    - host: api-sample-nest-app-vf-vodafoneziggo.empcbr.thoughtworks-labs.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sample-nest-app-vf
+                port: 
+                  number: 80
+  tls:
+  - hosts:
+    - api-sample-nest-app-vf-vodafoneziggo.empcbr.thoughtworks-labs.net
+    secretName: letencryptkey
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-nest-app-vf
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: sample-nest-app-vf
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-nest-app-vf
+  labels:
+    app: sample-nest-app-vf
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: sample-nest-app-vf
+  template:
+    metadata:
+      labels:
+        app: sample-nest-app-vf
+    spec:
+      containers:
+      - name: sample-nest-app-vf
+        image: 626109959667.dkr.ecr.us-east-1.amazonaws.com/sample-nest-app-vf:{image-tag}
+        ports:
+        - containerPort: 3000

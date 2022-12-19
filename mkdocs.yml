@@ -1,0 +1,8 @@
+site_name: "sample-nest-app-vf"
+site_description: "this is a sample application"
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core
